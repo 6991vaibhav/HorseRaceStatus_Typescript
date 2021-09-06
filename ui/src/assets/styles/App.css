@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.not-found {
+  display: block;
+}
+
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  padding: 0 30px 30px;
+}
+
+.login-cred-wrapper {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.race-status-wrapper {
+  width: 400px;
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-primary {
+  background-color: #24A0ED;
+  color: #ffffff;
+}
+
+input:focus {
+  outline: none;
+}
+
+td, th {
+  padding: 5px;
+  border: 1px solid lightgray;
+}
+
+.horse-id {
+  width: 25%;
+  text-align: right;
+}
+
+.horse-name {
+  width: 50%;
+  text-align: left;
+}
+
+.race-time {
+  width: 25%;
+  text-align: right;
+}
+
+.no-records {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 5px 0;
+}
+
+.success {
+  color: limegreen;
+  margin-bottom: 5px;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
