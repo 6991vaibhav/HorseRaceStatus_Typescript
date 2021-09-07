@@ -49,5 +49,5 @@ for example : docker exec -it cfef6147e1d6 sh
 **6. Folder will be shown which is created in Dockerfile in Project** (To see the content of folder run ls command)\
 ** Run command __yarn start__ ** (This will start the server and now Application will be up and running on the given url)\
 
- Point to horserace folder in terminal and run following command to run the test\
+ Point to ui folder in terminal and run following command to run the test\
 **yarn test ./src/__test__/components/Race.test.tsx**
