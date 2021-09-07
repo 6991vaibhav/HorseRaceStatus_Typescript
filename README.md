@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 **To run the app as a production build**\
 **yarn start:prod**
 
-**To run the production build on local make changes in .env file in ui folder.**
+**To run the production build on local make changes in .env file in ui folder.**\
 REACT_APP_SERVER_HOST = 'http://localhost'\
 REACT_APP_SERVER_PORT = 3080\
 REACT_APP_API_ROOT_PATH = 'api'\
@@ -48,3 +48,6 @@ Open another terminal and run below commands.\
 for example : docker exec -it cfef6147e1d6 sh
 **6. Folder will be shown which is created in Dockerfile in Project** (To see the content of folder run ls command)\
 ** Run command __yarn start__ ** (This will start the server and now Application will be up and running on the given url)\
+
+ Point to horserace folder in terminal and run following command to run the test\
+**yarn test ./src/__test__/components/Race.test.tsx**

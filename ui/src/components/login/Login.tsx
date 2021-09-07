@@ -1,14 +1,14 @@
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import {
   loginToRaceDashboard,
   updateLoginToken,
 } from "../../redux/actions/loginActions";
 import { LoginParamType } from "./types/loginTypes";
+import { useAppDispatch } from "../../redux/react-redux-hooks";
 
 const Login = (): JSX.Element => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

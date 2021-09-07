@@ -1,14 +1,14 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getRaceStatus } from "../../redux/actions/raceActions";
 import { HorseEntryTypes } from "./types/raceTypes";
 import HorseEntry from "./HorseEntry";
 import { InitialStateType } from "../../redux/types/reduxTypes";
+import { useAppDispatch, useAppSelector } from "../../redux/react-redux-hooks";
 
 const Race = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const { race, login } = useSelector((state: InitialStateType) => state);
+  const dispatch = useAppDispatch();
+  const { race, login } = useAppSelector((state: InitialStateType) => state);
   const { data } = race;
   React.useEffect(() => {
     if (login.data) {
@@ -50,7 +50,7 @@ const Race = (): JSX.Element => {
             </thead>
             <tbody>
               {data.map((entry: HorseEntryTypes) => {
-                return <HorseEntry row={entry} />;
+                return <HorseEntry  key={entry.id} row={entry} />;
               })}
             </tbody>
           </table>
