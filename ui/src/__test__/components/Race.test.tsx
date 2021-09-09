@@ -1,26 +1,30 @@
-import React from "react";
-import { configure, shallow } from "enzyme";
+import { configure, shallow } from 'enzyme';
+import configureStore from 'redux-mock-store';
 import Adapter from "enzyme-adapter-react-16";
-import configureStore from "redux-mock-store";
-import thunk from "redux-thunk";
-
-import Race from "../../components/race/Race";
+import { RootState } from '../../redux/store';
 import * as ReactReduxHooks from "../../redux/react-redux-hooks";
-import { getRaceStatus } from "../../redux/actions/raceActions";
+import Race from '../../components/race/Race';
 
 configure({ adapter: new Adapter() });
 
-describe("Race Status Display", () => {
-  let wrapper: any;
-  let useEffect: any;
-  let store: any;
+const setUp = (state: RootState | {}, props: any) => {
+  const mockStore = configureStore();
 
-  const mockUseEffect = () => {
-    useEffect.mockImplementationOnce((f: any) => f());
-  };
+  const store = mockStore(state);
+  jest
+      .spyOn(ReactReduxHooks, "useAppSelector")
+      .mockImplementation((state) => store.getState());
 
-  beforeEach(() => {
-    store = configureStore([thunk])({
+    jest
+      .spyOn(ReactReduxHooks, "useAppDispatch")
+      .mockImplementation(() => store.dispatch);
+  const wrapper = shallow(<Race {...props} store={store} />);
+  return wrapper;
+};
+
+describe('Race Component', () => {
+  it('should render Race Component correctly', () => {
+    const state = {
       login: {
         data: {
           token: "asdadds33432424nweddnweedk732723hadd",
@@ -35,29 +39,27 @@ describe("Race Status Display", () => {
           { id: 25, name: "Patriot", startTime: 0, endTime: null },
         ],
       },
-    });
+    }
+    const component = setUp(state, {});
+    const classInstance = component.find('.race-wrapper');
+    expect(classInstance.length).toBe(1);
+  })
 
-    useEffect = jest.spyOn(React, "useEffect");
-    mockUseEffect();
-
-    jest
-      .spyOn(ReactReduxHooks, "useAppSelector")
-      .mockImplementation((state) => store.getState());
-
-    jest
-      .spyOn(ReactReduxHooks, "useAppDispatch")
-      .mockImplementation(() => store.dispatch);
-
-    wrapper = shallow(<Race />);
-  });
-
-  describe("on Mount", () => {
-    it("dispatch fetch race status action to store", () => {
-      store.dispatch(getRaceStatus());
-    });
-  });
-
-  it("should render Race component correctly", () => {
-    expect(wrapper.find(".race-status-wrapper")).toHaveLength(1);
-  });
-});
+  it('should render Race Component correctly with no data', () => {
+    const state = {
+      login: {
+        data: {
+          token: "asdadds33432424nweddnweedk732723hadd",
+          email: "6991vaibhav@gmail.com",
+          password: "lTgAYaLP9jRs",
+        },
+      },
+      race: {
+        data: [],
+      },
+    }
+    const component = setUp(state, {});
+    const classInstance = component.find('.race-wrapper');
+    expect(classInstance.length).toBe(1);
+  })
+})

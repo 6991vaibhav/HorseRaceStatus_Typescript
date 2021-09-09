@@ -64,10 +64,11 @@ const Login = (): JSX.Element => {
       <div className="login-wrapper">
         <h3>Login</h3>
         {error && <div className="error">{INVALID_EMAIL}</div>}
-        <form onSubmit={handleLogin}>
+        <form id="loginForm" onSubmit={handleLogin}>
           <div className="login-cred-wrapper">
             <label>Email: </label>
             <input
+              id="email"
               type="text"
               value={email}
               onChange={handleEmailChange}
@@ -77,6 +78,7 @@ const Login = (): JSX.Element => {
           <div className="login-cred-wrapper">
             <label>Password: </label>
             <input
+              id="password"
               type="password"
               value={password}
               onChange={handlePasswordChange}

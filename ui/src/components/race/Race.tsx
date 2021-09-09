@@ -30,7 +30,7 @@ const Race = (): JSX.Element => {
   );
 
   return (
-    <div>
+    <div className="race-wrapper">
       {data.length === 0 && (
         <div className="no-records">
           <span className="blink">{RACE_STATUS_PLACEHOLDER}</span>
