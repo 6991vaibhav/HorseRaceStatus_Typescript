@@ -68,7 +68,7 @@ const Login = (): JSX.Element => {
           <div className="login-cred-wrapper">
             <label>Email: </label>
             <input
-              type="email"
+              type="text"
               value={email}
               onChange={handleEmailChange}
               placeholder="Enter email address..."
