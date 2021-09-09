@@ -52,3 +52,8 @@ export const formatTime = (time: number | null): string | 0 | null => {
     time && `${(time / 1000).toFixed(1)}`.split(".").join(",");
   return formattedTime && `${formattedTime}s`;
 };
+
+export const validateEmail = (val: string): boolean => {
+  const regexp = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  return regexp.test(val)
+}

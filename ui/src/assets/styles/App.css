@@ -95,6 +95,12 @@ td, th {
   margin-bottom: 5px;
 }
 
+.error {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
 .blink {
   animation: blinker 1s linear infinite;
 }

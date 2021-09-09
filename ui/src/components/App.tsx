@@ -7,12 +7,13 @@ import {
 import Race from "./race/Race";
 import Login from "./login/Login";
 import "../assets/styles/App.css";
-import NotFound from "./NotFound";
+import NotFound from "./common/NotFound";
 
 const App = (): JSX.Element => {
   return (
     <Router>
-      <div className="app">
+      <div className="main">
+        <div className="app">
         <Switch>
           <Route path="/" exact>
             <Redirect from="/" to="/login" />
@@ -27,6 +28,7 @@ const App = (): JSX.Element => {
             <NotFound />
           </Route>
         </Switch>
+        </div>
       </div>
     </Router>
   );

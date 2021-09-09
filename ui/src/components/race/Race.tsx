@@ -5,6 +5,10 @@ import { HorseEntryTypes } from "./types/raceTypes";
 import HorseEntry from "./HorseEntry";
 import { InitialStateType } from "../../redux/types/reduxTypes";
 import { useAppDispatch, useAppSelector } from "../../redux/react-redux-hooks";
+import {
+  RACE_COMPLETED_MSG,
+  RACE_STATUS_PLACEHOLDER,
+} from "../../helpers/constants";
 
 const Race = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -21,24 +25,22 @@ const Race = (): JSX.Element => {
     return <Redirect to="/" />;
   }
 
-  const isRaceCompleted =
-    data.length === 6 &&
-    !data.some((item: HorseEntryTypes) => item.endTime === null);
+  const isRaceCompleted = !data.some(
+    (item: HorseEntryTypes) => item.endTime === null
+  );
 
   return (
     <div>
       {data.length === 0 && (
         <div className="no-records">
-          <span className="blink">Race is about to start.....</span>
+          <span className="blink">{RACE_STATUS_PLACEHOLDER}</span>
         </div>
       )}
       {data.length > 0 && (
         <>
           <h3 className="title">Race Status</h3>
           {isRaceCompleted && (
-            <div className="success">
-              The Race has completed. Next Race will begin in a while...
-            </div>
+            <div className="success">{RACE_COMPLETED_MSG}</div>
           )}
           <table className="race-status-wrapper">
             <thead>
@@ -50,7 +52,7 @@ const Race = (): JSX.Element => {
             </thead>
             <tbody>
               {data.map((entry: HorseEntryTypes) => {
-                return <HorseEntry  key={entry.id} row={entry} />;
+                return <HorseEntry key={entry.id} row={entry} />;
               })}
             </tbody>
           </table>
